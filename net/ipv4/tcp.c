@@ -2523,6 +2523,7 @@ static int do_tcp_setsockopt(struct sock *sk, int level,
 {
 	struct tcp_sock *tp = tcp_sk(sk);
 	struct inet_connection_sock *icsk = inet_csk(sk);
+	struct net *net = sock_net(sk);
 	int val;
 	int err = 0;
 
@@ -2795,7 +2796,7 @@ static int do_tcp_setsockopt(struct sock *sk, int level,
 	case TCP_FASTOPEN:
 		if (val >= 0 && ((1 << sk->sk_state) & (TCPF_CLOSE |
 		    TCPF_LISTEN))) {
-			tcp_fastopen_init_key_once();
+			tcp_fastopen_init_key_once(net);
 
 			fastopen_queue_tune(sk, val);
 		} else {
