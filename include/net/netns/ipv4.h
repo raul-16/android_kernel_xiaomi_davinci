@@ -152,6 +152,7 @@ struct netns_ipv4 {
 	int sysctl_tcp_challenge_ack_limit;
 	struct inet_timewait_death_row tcp_death_row;
 	int sysctl_max_syn_backlog;
+	const struct tcp_congestion_ops __rcu  *tcp_congestion_control;
 	int sysctl_tcp_fastopen;
 	struct tcp_fastopen_context __rcu *tcp_fastopen_ctx;
 	spinlock_t tcp_fastopen_ctx_lock;
