@@ -1646,8 +1646,7 @@ extern int vfs_unlink(struct inode *, struct dentry *, struct inode **);
 extern int vfs_rename(struct inode *, struct dentry *, struct inode *, struct dentry *, struct inode **, unsigned int);
 extern int vfs_whiteout(struct inode *, struct dentry *);
 
-extern struct dentry *vfs_tmpfile(struct vfsmount *mnt,
-				  struct dentry *dentry, umode_t mode,
+extern struct dentry *vfs_tmpfile(struct dentry *dentry, umode_t mode,
 				  int open_flag);
 
 /*
